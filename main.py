@@ -1,5 +1,6 @@
 import pygame
 from graphics.World import Window
+from gui.Widgets import Button
 #from run import *
 pygame.init()
 import random
@@ -7,6 +8,8 @@ class App(Window):
     def build(self):
 
         self.add_loop(loop=self.pr)
+        b = Button(name="1",command= lambda: print(4))
+        self.add_widget(b)
         self.map = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
                     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
                     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
