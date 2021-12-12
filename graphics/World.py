@@ -3,17 +3,20 @@ import pygame
 from threading import Thread
 pygame.init()
 class Window():
-    def __init__(self,window_size=(500,500),display=None):
+    def __init__(self, window_size=(500,500), display=None, background_color=(0,0,0)):
+        self.background_color = background_color
         if display == None:
             self.display = pygame.display.set_mode(window_size)
         else:
             self.display = display
 
         self.loops = []
-        self.start = False
+        #self.start = False
         self.render = {}
-
-        self.build()
+        try:
+            self.start()
+        except:
+            raise BaseException("You need to add 'build' function in your app!")
     def add_widget(self,widget):
 
         self.render[widget.name] = widget
@@ -27,6 +30,7 @@ class Window():
         print(loop)
         self.loops.append(loop)
     def main_loop(self):
+        self.display.fill(self.background_color)
         for ev in pygame.event.get():
             if ev.type == pygame.QUIT:
                 pygame.quit()
